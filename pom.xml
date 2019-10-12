@@ -9,4 +9,21 @@
     <version>1.0-SNAPSHOT</version>
 
 
+    <build>
+        <resources>
+            <!--
+                对于maven项目，Idea不会自动将sources下面即src\main\java\目录下的配置文件（.xml）
+            和资源文件（.properties或.bpmn）复制到target目录下,解决方法如下：
+                此处代码是把src/main/java目录下所有properties文件都包含进去，${basedir}是maven的
+            内置变量，表示项目根目录。如果需要添加其他文件如.xml 文件，可以添加标签;
+            -->
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+    
 </project>
